@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nguyễn Thuỳ Linh - Portfolio Cá Nhân</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-gradient: linear-gradient(135deg, #f3e8ff 0%, #fae8ff 45%, #e0e7ff 100%);
+            --glass-bg: rgba(255, 255, 255, 0.8);
+            --glass-border: rgba(255, 255, 255, 0.9);
+            --primary: #7e22ce;
+            --primary-dark: #4c1d95;
+            --accent: #c084fc;
+            --text-main: #2e1065;
+            --text-muted: #5b21b6;
+        }
+
+        * {
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Quicksand', sans-serif;
+            background: var(--bg-gradient);
+            background-attachment: fixed;
+            color: var(--text-main);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        .blob {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: -1;
+            opacity: 0.6;
+        }
+        .blob-1 {
+            width: 380px;
+            height: 380px;
+            background: #d8b4fe;
+            top: -80px;
+            left: -80px;
+        }
+        .blob-2 {
+            width: 420px;
+            height: 420px;
+            background: #f0abfc;
+            bottom: -100px;
+            right: -100px;
+        }
+
+        nav {
+            position: fixed;
+            top: 16px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 100;
+            width: calc(100% - 32px);
+            max-width: 760px;
+            padding: 10px 18px;
+            background: rgba(255, 255, 255, 0.78);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            border-radius: 50px;
+            box-shadow: 0 8px 32px rgba(76, 29, 149, 0.14);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--primary-dark);
+            font-weight: 700;
+            font-size: 0.92rem;
+            padding: 7px 15px;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            background: var(--primary);
+            color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(126, 34, 206, 0.25);
+        }
+
+        header {
+            position: relative;
+            min-height: 460px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 120px 20px 80px;
+            background-image: 
+                linear-gradient(180deg, rgba(46, 16, 101, 0.38) 0%, rgba(107, 33, 168, 0.45) 65%, #f3e8ff 100%),
+                url('https://i.ibb.co/Jjs9NtSr/IMG-6228.jpg');
+            background-size: cover;
+            background-position: center;
+            margin-bottom: 10px;
+        }
+
+        .hero-box {
+            max-width: 680px;
+            padding: 36px 40px;
+            background: rgba(255, 255, 255, 0.22);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.45);
+            border-radius: 28px;
+            box-shadow: 0 16px 40px rgba(46, 16, 101, 0.2);
+        }
+
+        .badge-top {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 0.85rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 6px 18px;
+            border-radius: 30px;
+            margin-bottom: 14px;
+            box-shadow: 0 4px 15px rgba(76, 29, 149, 0.15);
+        }
+
+        header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.4rem, 6vw, 3.8rem);
+            margin: 0;
+            color: #ffffff;
+            text-shadow: 0 4px 18px rgba(46, 16, 101, 0.45);
+            line-height: 1.2;
+        }
+
+        header p {
+            margin: 12px 0 0;
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: #faf5ff;
+            text-shadow: 0 2px 10px rgba(46, 16, 101, 0.4);
+        }
+
+        main {
+            max-width: 880px;
+            margin: 0 auto;
+            padding: 10px 20px 60px;
+        }
+
+        section {
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 32px 36px;
+            margin-bottom: 30px;
+            box-shadow: 0 12px 36px rgba(88, 28, 135, 0.06);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            scroll-margin-top: 90px;
+        }
+
+        section:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 42px rgba(88, 28, 135, 0.1);
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.75rem;
+            color: var(--primary-dark);
+            margin: 0 0 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        h2::after {
+            content: "";
+            flex: 1;
+            height: 2px;
+            background: linear-gradient(90deg, #d8b4fe, transparent);
+            border-radius: 2px;
+        }
+
+        h3 {
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin: 26px 0 14px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+        }
+
+        .info-item {
+            background: rgba(255, 255, 255, 0.75);
+            padding: 16px 20px;
+            border-radius: 16px;
+            border: 1px solid #f3e8ff;
+        }
+
+        .info-label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #9333ea;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+
+        .info-value {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+        }
+
+        .traits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 18px;
+        }
+
+        .trait-card {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(243, 232, 255, 0.6));
+            padding: 20px;
+            border-radius: 18px;
+            border: 1px solid #e9d5ff;
+            transition: all 0.3s ease;
+        }
+
+        .trait-card:hover {
+            border-color: #c084fc;
+            transform: scale(1.02);
+        }
+
+        .trait-title {
+            font-weight: 700;
+            font-size: 1.15rem;
+            color: var(--primary);
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .hobby-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+
+        .hobby-card {
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid #f3e8ff;
+            box-shadow: 0 6px 20px rgba(107, 33, 168, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .hobby-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .hobby-card img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .hobby-caption {
+            padding: 16px 20px;
+        }
+
+        .hobby-tag {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #9333ea;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+
+        .hobby-name {
+            margin: 4px 0 0;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 10px 28px rgba(76, 29, 149, 0.14);
+            border: 3px solid #ffffff;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .dream-banner {
+            background: linear-gradient(135deg, #6b21a8, #9333ea);
+            color: #ffffff;
+            padding: 20px 24px;
+            border-radius: 18px;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 24px rgba(107, 33, 168, 0.2);
+        }
+
+        .dream-banner strong {
+            font-size: 1.25rem;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .contact-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .btn-contact {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 24px;
+            border-radius: 16px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s ease;
+        }
+
+        .btn-fb {
+            background: linear-gradient(135deg, #7e22ce, #a855f7);
+            color: #ffffff;
+            box-shadow: 0 6px 18px rgba(126, 34, 206, 0.25);
+        }
+
+        .btn-fb:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 24px rgba(126, 34, 206, 0.35);
+        }
+
+        .btn-phone {
+            background: #ffffff;
+            color: var(--primary-dark);
+            border: 2px solid #d8b4fe;
+        }
+
+        .btn-phone:hover {
+            background: #faf5ff;
+            transform: translateY(-3px);
+        }
+
+        footer {
+            text-align: center;
+            padding: 28px 20px;
+            color: var(--primary-dark);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 600px) {
+            nav { border-radius: 22px; top: 10px; }
+            header { min-height: 400px; padding: 110px 16px 60px; }
+            .hero-box { padding: 26px 20px; }
+            section { padding: 22px 18px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+
+    <nav>
+        <a href="#thongtin">Thông tin</a>
+        <a href="#tinhcach">Tính cách</a>
+        <a href="#sothich">Sở thích</a>
+        <a href="#truongmo">Ước mơ HUST</a>
+        <a href="#lienhe">Liên hệ</a>
+    </nav>
+
+    <header>
+        <div class="hero-box">
+            <span class="badge-top">12A4 • THPT Hòn Gai</span>
+            <h1>Nguyễn Thuỳ Linh</h1>
+            <p>Chào mừng bạn đến với góc nhỏ đầy sắc tím của mình ✨</p>
+        </div>
+    </header>
+
+    <main>
+        <section id="thongtin">
+            <h2>1. Thông tin cá nhân</h2>
+            <div class="info-grid">
+                <div class="info-item">
+                    <span class="info-label">Họ và tên</span>
+                    <span class="info-value">Nguyễn Thuỳ Linh</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Lớp</span>
+                    <span class="info-value">12A4</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Trường</span>
+                    <span class="info-value">THPT Hòn Gai</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Điện thoại</span>
+                    <span class="info-value">0936826561</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="tinhcach">
+            <h2>2. Tính cách</h2>
+            <div class="traits-grid">
+                <div class="trait-card">
+                    <span class="trait-title">✨ Thân thiện</span>
+                    Luôn hòa đồng, vui vẻ và tạo cảm giác thoải mái, gần gũi khi trò chuyện cùng mọi người xung quanh.
+                </div>
+                <div class="trait-card">
+                    <span class="trait-title">💜 Cởi mở</span>
+                    Dễ tiếp thu những góc nhìn mới, sẵn sàng lắng nghe, học hỏi và đón nhận thử thách tích cực.
+                </div>
+                <div class="trait-card">
+                    <span class="trait-title">🌟 Có trách nhiệm</span>
+                    Luôn tận tâm, nghiêm túc và nỗ lực hoàn thành chu đáo mọi nhiệm vụ trong học tập lẫn tập thể.
+                </div>
+            </div>
+        </section>
+
+        <section id="sothich">
+            <h2>3. Sở thích</h2>
+            <div class="hobby-grid">
+                <div class="hobby-card">
+                    <img src="https://i.ibb.co/ccPQMvxg/IMG-6204.jpg" alt="Nhóm nhạc BTS">
+                    <div class="hobby-caption">
+                        <span class="hobby-tag">Nhóm nhạc yêu thích</span>
+                        <p class="hobby-name">BTS (Bangtan Sonyeondan)</p>
+                    </div>
+                </div>
+                <div class="hobby-card">
+                    <img src="https://i.ibb.co/ZZ7fXNL/IMG-6205.jpg" alt="Bộ phim Harry Potter">
+                    <div class="hobby-caption">
+                        <span class="hobby-tag">Bộ phim yêu thích</span>
+                        <p class="hobby-name">Harry Potter</p>
+                    </div>
+                </div>
+            </div>
+
+            <h3>🎵 Bài hát yêu thích: BTS - Make It Right (feat. Lauv)</h3>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/eXBu09fwe3I"
+                        title="BTS (방탄소년단) 'Make It Right (feat. Lauv)' Official MV"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+            </div>
+        </section>
+
+        <section id="truongmo">
+            <h2>4. Trường đại học mơ ước</h2>
+            <div class="dream-banner">
+                <strong>Đại học Bách khoa Hà Nội (HUST)</strong>
+                <span>Mục tiêu chinh phục cánh cổng Bách khoa với môi trường học tập năng động, sáng tạo và hiện đại.</span>
+            </div>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/PF2_h2UgU6I"
+                        title="Tổng quan khuôn viên Đại Học Bách Khoa Hà Nội"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+            </div>
+        </section>
+
+        <section id="lienhe">
+            <h2>5. Kết nối với mình</h2>
+            <div class="contact-links">
+                <a href="https://www.facebook.com/share/1KXtcHeCnM/?mibextid=wwXIfr" target="_blank" class="btn-contact btn-fb">
+                    Facebook cá nhân của Linh
+                </a>
+                <a href="tel:0936826561" class="btn-contact btn-phone">
+                    Gọi điện: 0936826561
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        © 2026 Nguyễn Thuỳ Linh • Lớp 12A4, Trường THPT Hòn Gai
+    </footer>
+
+</body>
+</html>
